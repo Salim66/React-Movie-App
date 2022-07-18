@@ -7,7 +7,8 @@ class App extends Component {
     super();
 
     this.state = {
-      movies: []
+      movies: [],
+      showMovies: false
     }
   }
 
@@ -20,9 +21,12 @@ class App extends Component {
   }
 
   render(){
-    return (
-      <div className="App">
-        <h1>Welcome To ThereSixtyDegree</h1>
+    let { showMovies } = this.state;
+    let renderMovies = null;
+
+    if(showMovies){
+      renderMovies = (
+        <div>
         {
           this.state.movies.map((movie) => {
             return (
@@ -32,6 +36,17 @@ class App extends Component {
             )
           })
         }
+        </div>
+      );
+    }
+    
+    return (
+      <div className="App">
+        <h1>Welcome To ThereSixtyDegree</h1>
+        <button onClick={ () => {
+          this.setState({ showMovies: !showMovies })
+        } }>Show Movies</button>
+        { renderMovies }
       </div>
     );
   }
