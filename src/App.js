@@ -8,9 +8,9 @@ class App extends Component {
 
     this.state = {
       movies: [
-        {name: 'Fast 9', year: 2020},
-        {name: 'Fast X', year: 2022},
-        {name: 'Fast 11', year: 2023},
+        { id: 1, name: 'Fast 9', year: 2020},
+        { id: 2, name: 'Fast X', year: 2022},
+        { id: 3,name: 'Fast 11', year: 2023},
       ]
     }
   }
@@ -18,9 +18,9 @@ class App extends Component {
   changeName = (event) => {
     this.setState({ 
       movies : [
-        {name: event.target.value, year: 2025},
-        {name: 'Fast X', year: 2022},
-        {name: 'Fast 11', year: 2023},
+        { id: 1, name: event.target.value, year: 2025},
+        { id: 2, name: 'Fast X', year: 2022},
+        { id: 3, name: 'Fast 11', year: 2023},
       ]
      });
   }
@@ -29,9 +29,15 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome To ThereSixtyDegree</h1>
-        <p>My favorite movie is { this.state.movies[0].name } { this.state.movies[0].year }</p>
-        <p>My favorite movie is { this.state.movies[1].name } { this.state.movies[1].year }</p>
-        <p>My favorite movie is { this.state.movies[2].name } { this.state.movies[2].year }</p>
+        {
+          this.state.movies.map((movie) => {
+            return (
+              <h2 key={ movie.id }>
+                My favorite movie is { movie.name } { movie.year }
+              </h2>
+            )
+          })
+        }
         <input type="text" onChange={ this.changeName } value={ this.state.movies[0].name } />
       </div>
     );
