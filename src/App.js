@@ -7,22 +7,16 @@ class App extends Component {
     super();
 
     this.state = {
-      movies: [
-        { id: 1, name: 'Fast 9', year: 2020},
-        { id: 2, name: 'Fast X', year: 2022},
-        { id: 3,name: 'Fast 11', year: 2023},
-      ]
+      movies: []
     }
   }
 
-  changeName = (event) => {
-    this.setState({ 
-      movies : [
-        { id: 1, name: event.target.value, year: 2025},
-        { id: 2, name: 'Fast X', year: 2022},
-        { id: 3, name: 'Fast 11', year: 2023},
-      ]
-     });
+  componentDidMount() {
+    fetch('https://my-json-server.typicode.com/horizon-code-academy/fake-movies-api/movies')
+    .then((response) => response.json())
+    .then((data) => this.setState(() => {
+      return { movies: data }
+    }))
   }
 
   render(){
@@ -32,13 +26,12 @@ class App extends Component {
         {
           this.state.movies.map((movie) => {
             return (
-              <h2 key={ movie.id }>
-                My favorite movie is { movie.name } { movie.year }
+              <h2 key={ movie.Title }>
+                My favorite movie is { movie.Title } { movie.Year }
               </h2>
             )
           })
         }
-        <input type="text" onChange={ this.changeName } value={ this.state.movies[0].name } />
       </div>
     );
   }
