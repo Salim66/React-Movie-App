@@ -7,20 +7,29 @@ class App extends Component {
     super();
 
     this.state = {
-      movieName: "Fast X",
+      movies: [
+        {name: 'Fast 9', year: 2020},
+        {name: 'Fast X', year: 2022},
+        {name: 'Fast 11', year: 2023},
+      ]
     }
   }
   render(){
     return (
       <div className="App">
         <h1>Welcome To ThereSixtyDegree</h1>
-        <p>My favorite movie is { this.state.movieName }</p>
+        <p>My favorite movie is { this.state.movies[0].name } { this.state.movies[0].year }</p>
+        <p>My favorite movie is { this.state.movies[1].name } { this.state.movies[1].year }</p>
+        <p>My favorite movie is { this.state.movies[2].name } { this.state.movies[2].year }</p>
         <button onClick={ () => {
-          this.setState({ movieName: "Fast 11" });
-        } }>Fast 11</button>
-        <button onClick={ () => {
-          this.setState({ movieName: "Fast 9" });
-        } }>Fast 9</button>
+          this.setState({ 
+            movies : [
+              {name: 'Fast 12', year: 2025},
+              {name: 'Fast X', year: 2022},
+              {name: 'Fast 11', year: 2023},
+            ]
+           });
+        } }>Fast 12</button>
       </div>
     );
   }
