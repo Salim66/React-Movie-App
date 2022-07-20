@@ -43,9 +43,11 @@ class App extends Component {
     }
     
     return (
-      <div className="App">
-        <h1>Welcome To ThereSixtyDegree</h1>
-        <input type="search" onChange={ this.searchMovieHandler } />
+      <div className="max-w-6xl mx-auto bg-slate-200">
+        <h1 className='flex justify-center text-2xl font-semibold'>Welcome To ThereSixtyDegree</h1>
+        <div className='flex justify-center'>
+          <input className='m-2 p-2 text-grap-400 rounded-md' type="search" onChange={ this.searchMovieHandler } />
+        </div>
         { renderMovies }
       </div>
     );
