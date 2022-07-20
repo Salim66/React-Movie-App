@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import MovieCard from '../Movie-Card/Movie-Card';
 
 class MovieList extends Component {
     render(){
@@ -7,9 +8,7 @@ class MovieList extends Component {
                 {
                 this.props.movies.map((movie) => {
                     return (
-                    <h2 key={ movie.Title }>
-                        My favorite movie is { movie.Title } { movie.Year }
-                    </h2>
+                        <MovieCard movie={ movie } />
                     )
                 })
                 }
